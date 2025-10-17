@@ -1,0 +1,87 @@
+{
+  "version": "0.6.0",
+  "createTimestamp": 1759427962537,
+  "modifyTimestamp": 1759427962537,
+  "uri": "file:/Users/yhu10/Desktop/VLM/pipline_data_patch_level/path_level_projcet/project.qpproj",
+  "lastID": 1,
+  "images": [
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:/Users/yhu10/Desktop/VLM/DATA/CMU-2.svs",
+        "args": [],
+        "metadata": {
+          "name": "CMU-2.svs",
+          "width": 78000,
+          "height": 30462,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 78000,
+              "height": 30462
+            },
+            {
+              "downsample": 4.0,
+              "width": 19500,
+              "height": 7615
+            },
+            {
+              "downsample": 16.0,
+              "width": 4875,
+              "height": 1903
+            },
+            {
+              "downsample": 32.0,
+              "width": 2437,
+              "height": 951
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.499,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.499,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 256,
+          "preferredTileHeight": 256
+        }
+      },
+      "entryID": 1,
+      "randomizedName": "8ed579b7-b7a2-4eae-82a4-972f4fe07148",
+      "imageName": "CMU-2.svs",
+      "metadata": {},
+      "tags": []
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "version": "0.6.0",
+  "createTimestamp": 1758553599293,
+  "modifyTimestamp": 1758553599293,
+  "uri": "file:/Users/yhu10/Desktop/VLM/pipline_data_cell_level/project.qpproj",
+  "lastID": 2,
+  "images": [
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.openslide.OpenslideServerBuilder",
+        "uri": "file:/Users/yhu10/Desktop/test/CMU-2.svs",
+        "args": [],
+        "metadata": {
+          "name": "CMU-2.svs",
+          "width": 78000,
+          "height": 30462,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 78000,
+              "height": 30462
+            },
+            {
+              "downsample": 4.0,
+              "width": 19500,
+              "height": 7615
+            },
+            {
+              "downsample": 16.0,
+              "width": 4875,
+              "height": 1903
+            },
+            {
+              "downsample": 32.0,
+              "width": 2437,
+              "height": 951
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.499,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.499,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 20.0,
+          "preferredTileWidth": 256,
+          "preferredTileHeight": 256
+        }
+      },
+      "entryID": 1,
+      "randomizedName": "1ccd2965-e830-4c62-8988-2f960da04dc2",
+      "imageName": "CMU-2.svs",
+      "metadata": {},
+      "tags": []
+    },
+    {
+      "serverBuilder": {
+        "builderType": "uri",
+        "providerClassName": "qupath.lib.images.servers.bioformats.BioFormatsServerBuilder",
+        "uri": "file:/Users/yhu10/Downloads/gdc_download_20250922_152121.961178/21c2d368-82ee-4e1f-be19-ca0936f3d0d9/HCM-CSHL-0639-C56-11A-01-S2-HE.11A9B8DB-8D5D-4631-8BC3-05BC2E6F837E.svs",
+        "args": [
+          "--series",
+          "0"
+        ],
+        "metadata": {
+          "name": "HCM-CSHL-0639-C56-11A-01-S2-HE.11A9B8DB-8D5D-4631-8BC3-05BC2E6F837E.svs",
+          "width": 65869,
+          "height": 28008,
+          "sizeZ": 1,
+          "sizeT": 1,
+          "channelType": "DEFAULT",
+          "isRGB": true,
+          "pixelType": "UINT8",
+          "levels": [
+            {
+              "downsample": 1.0,
+              "width": 65869,
+              "height": 28008
+            },
+            {
+              "downsample": 4.0,
+              "width": 16467,
+              "height": 7002
+            },
+            {
+              "downsample": 16.0,
+              "width": 4116,
+              "height": 1750
+            }
+          ],
+          "channels": [
+            {
+              "name": "Red",
+              "color": -65536
+            },
+            {
+              "name": "Green",
+              "color": -16711936
+            },
+            {
+              "name": "Blue",
+              "color": -16776961
+            }
+          ],
+          "pixelCalibration": {
+            "pixelWidth": {
+              "value": 0.263447,
+              "unit": "µm"
+            },
+            "pixelHeight": {
+              "value": 0.263447,
+              "unit": "µm"
+            },
+            "zSpacing": {
+              "value": 1.0,
+              "unit": "z-slice"
+            },
+            "timeUnit": "SECONDS",
+            "timepoints": []
+          },
+          "magnification": 40.0,
+          "preferredTileWidth": 256,
+          "preferredTileHeight": 256
+        }
+      },
+      "entryID": 2,
+      "randomizedName": "da5ea1da-c67a-4c0d-98b0-098507e3d98f",
+      "imageName": "HCM-CSHL-0639-C56-11A-01-S2-HE.11A9B8DB-8D5D-4631-8BC3-05BC2E6F837E.svs",
+      "metadata": {},
+      "tags": []
+    }
+  ]
+}

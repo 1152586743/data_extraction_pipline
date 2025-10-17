@@ -1,0 +1,11 @@
+{
+    "name": "eos",
+    "host": "129.106.31.79",
+    "protocol": "sftp",
+    "port": 22,
+    "username": "jjiang10",
+    "remotePath": "/data/jjiang10",
+    "uploadOnSave": false,
+    "useTempFile": false,
+    "openSsh": false
+}

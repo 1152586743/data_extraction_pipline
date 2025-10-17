@@ -1,0 +1,9 @@
+{
+  "slide_id": "CMU-2",
+  "patch_size": 256,
+  "counts": {
+    "benign": 43,
+    "tumor": 5
+  },
+  "best_val_acc": 1.0
+}

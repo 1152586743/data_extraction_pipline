@@ -1,0 +1,11 @@
+{
+    "name": "bastion",
+    "host": "129.106.31.39",
+    "protocol": "sftp",
+    "port": 22,
+    "username": "jjiang10",
+    "remotePath": "/data/jjiang10",
+    "uploadOnSave": false,
+    "useTempFile": false,
+    "openSsh": false
+}
