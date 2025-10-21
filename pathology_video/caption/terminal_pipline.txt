@@ -1,0 +1,78 @@
+# ====== CONFIG ======
+CSV_IN="/Users/yhu10/Desktop/VLM/data_extraction_pipline/pathology_video/playlist/dermatology_all_20251017.csv"
+
+BASE_CAP="/Users/yhu10/Desktop/VLM/data_extraction_pipline/pathology_video/caption"
+DIR_ORIG="$BASE_CAP/caption_origin"
+DIR_ORGZ="$BASE_CAP/caption_orgainized"
+
+TOP_N=3 # change here for number of video you want to extract
+CHROME_PROFILE="Default"   # from your listing
+# =====================
+
+mkdir -p "$DIR_ORIG" "$DIR_ORGZ"
+
+# --- ensure deps for conversion (harmless if already installed) ---
+python3 -m pip install --user webvtt-py pandas >/dev/null 2>&1 || true
+
+# --- pick first N video_ids from CSV (expects header 'video_id') ---
+VIDS=($(awk -F, '
+  NR==1 { for(i=1;i<=NF;i++) if($i=="video_id") c=i; next }
+  c && $c!="" { print $c; k++; if(k=='"$TOP_N"') exit }
+' "$CSV_IN"))
+
+echo "[INFO] vids: ${VIDS[*]}"
+
+for VID in "${VIDS[@]}"; do
+  echo "=============================="
+  echo "[STEP] $VID"
+
+  CAP_ORIG="$DIR_ORIG/$VID"
+  CAP_ORGZ="$DIR_ORGZ/$VID"
+  mkdir -p "$CAP_ORIG" "$CAP_ORGZ"
+
+  # 1) download english captions (.vtt) into caption_origin/<vid>/
+  python3 -m yt_dlp --skip-download \
+    --write-sub --write-auto-sub --sub-langs "en.*,en" --sub-format vtt \
+    --sleep-requests 2 --retry-sleep 3 --retries 12 \
+    --cookies-from-browser "chrome:$CHROME_PROFILE" \
+    --extractor-args "youtube:player_client=web_embedded" \
+    -o "$CAP_ORIG/%(id)s.%(language)s.%(ext)s" \
+    "https://www.youtube.com/watch?v=$VID" || true
+
+  # 2) convert best english vtt (no extra working dirs)
+  python3 - "$VID" "$CAP_ORIG" "$CAP_ORGZ/segments.csv" <<'PY'
+import sys, re
+from pathlib import Path
+import webvtt, pandas as pd
+
+VID = sys.argv[1]
+vtt_dir = Path(sys.argv[2])
+out_csv = Path(sys.argv[3])
+
+# pick the largest english-ish vtt: <vid>.*en*.vtt (covers en, en-en, es.en, etc.)
+cands = sorted(vtt_dir.glob(f"{VID}.*en*.vtt"), key=lambda p: p.stat().st_size, reverse=True)
+
+if not cands:
+    print(f"[SKIP] {VID} — no English .vtt under {vtt_dir}")
+    sys.exit(0)
+
+best = cands[0]
+
+def norm(s: str) -> str:
+    return re.sub(r"\s+", " ", s).strip()
+
+rows = []
+for i, c in enumerate(webvtt.read(str(best))):
+    rows.append({"video_id": VID, "idx": i, "start": c.start, "end": c.end, "text": norm(c.text)})
+
+out_csv.parent.mkdir(parents=True, exist_ok=True)
+pd.DataFrame(rows).to_csv(out_csv, index=False)
+print(f"[OK] {VID} -> {out_csv}  (src: {best.name})")
+PY
+
+  # polite delay between videos
+  sleep 2
+done
+
+echo "=============================="
+echo "[DONE]"

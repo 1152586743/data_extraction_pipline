@@ -1,0 +1,7 @@
+# --- local data we do NOT push ---
+pathology_video/caption/caption_origin/
+pathology_video/caption/caption_orgainized/
+
+# (optional) keep folder structure without data
+# !pathology_video/caption/caption_origin/.gitkeep
+# !pathology_video/caption/caption_orgainized/.gitkeep

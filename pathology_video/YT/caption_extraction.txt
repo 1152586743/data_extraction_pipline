@@ -1,0 +1,35 @@
+
+
+目录约定
+
+BASE=/Users/yhu10/Desktop/VLM/pathology_video/YT
+
+步骤 1：下载字幕（只下英文轨道）
+VID="8N0IZZpF8ts"
+BASE="/Users/yhu10/Desktop/VLM/pathology_video/YT"
+
+mkdir -p "$BASE/$VID/captions"
+
+# 先看看有哪些字幕轨道（可选）
+yt-dlp --list-subs "https://www.youtube.com/watch?v=$VID"
+
+# 下载英文字幕（可能会得到 en.vtt / en-orig.vtt / en-en.vtt 三种之一或多种）
+yt-dlp --skip-download \
+  --write-sub --write-auto-sub --sub-langs "en.*" --sub-format vtt \
+  -o "$BASE/%(id)s/captions/%(id)s.%(lang)s.%(ext)s" \
+  "https://www.youtube.com/watch?v=$VID"
+
+步骤 2：把 .vtt 转成 segments.csv
+
+python3 /Users/yhu10/Desktop/VLM/pathology_video/YT/vtt_to_segments.py \
+  --base "/Users/yhu10/Desktop/VLM/pathology_video/YT" \
+  8N0IZZpF8ts
+# 或者直接用 URL 也行：
+# python3 /Users/.../vtt_to_segments.py --base "/Users/.../YT" "https://www.youtube.com/watch?v=8N0IZZpF8ts"
+
+
+Document title and original link
+playlist youtube video
+gpt time slot
+Video frame to that slot
+key word: dermatology
